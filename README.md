@@ -5,15 +5,14 @@ A customizable slider that will activate a callback when the user slides it to 1
 ## Screenshots
 
 ![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/example.gif "Slider Gif")
-<img src="https://github.com/Friiiis/slide_to_confirm/blob/master/example.gif" width="300">
 
-<img src="https://github.com/Friiiis/slide_to_confirm/blob/master/sc01.jpg" width="300">
+![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc01.jpg "Slider Gif")
 
-<img src="https://github.com/Friiiis/slide_to_confirm/blob/master/sc02.jpg" width="300">
+![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc02.jpg "Slider Gif")
 
-<img src="https://github.com/Friiiis/slide_to_confirm/blob/master/sc03.jpg" width="300">
+![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc03.jpg "Slider Gif")
 
-<img src="https://github.com/Friiiis/slide_to_confirm/blob/master/sc04.jpg" width="300">
+![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc04.jpg "Slider Gif")
 
 ## Installation
 
