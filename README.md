@@ -1,4 +1,4 @@
-# confirmation_slider
+# slide_to_confirm
 
 A customizable slider that will activate a callback when the user slides it to 100%.
 
@@ -19,13 +19,13 @@ A customizable slider that will activate a callback when the user slides it to 1
 In the `dependencies:` section of your `pubspec.yaml`, add the following line:
 
 ```yaml
-  confirmation_slider: <latest_version>
+  slide_to_confirm: <latest_version>
 ```
 
 ## Usage
 
 ```dart
-import 'package:confirmation_slider/confirmation_slider.dart';
+import 'package:slide_to_confirm/slide_to_confirm.dart';
 
 class MyWidget extends StatelessWidget {
 

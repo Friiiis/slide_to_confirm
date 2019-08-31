@@ -1,4 +1,4 @@
-name: confirmation_slider
+name: slide_to_confirm
 description: A slider that will activate a callback when the user slides it to 100%.
 version: 0.0.1
 author: Gustav Friis-Hansen <friisdeveloper@gmail.com>

@@ -1,4 +1,4 @@
-library confirmation_slider;
+library slide_to_confirm;
 
 import 'package:flutter/material.dart';
 
