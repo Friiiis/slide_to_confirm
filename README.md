@@ -4,19 +4,14 @@ A customizable slider that will activate a callback when the user slides it to 1
 
 ## Screenshots
 
-Gif showing a working slider.
 <img src="example.gif" width="300">
 
-Gif showing a working slider.
 <img src="sc01.jpg" width="300">
 
-Gif showing a working slider.
 <img src="sc02.jpg" width="300">
 
-Gif showing a working slider.
 <img src="sc03.jpg" width="300">
 
-Gif showing a working slider.
 <img src="sc04.jpg" width="300">
 
 ## Installation
