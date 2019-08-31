@@ -1,8 +1,8 @@
 name: confirmation_slider
 description: A slider that will activate a callback when the user slides it to 100%.
 version: 0.0.1
-author:
-homepage:
+author: Gustav Friis-Hansen <friisdeveloper@gmail.com>
+homepage: https://github.com/Friiiis/confirmation_slider
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

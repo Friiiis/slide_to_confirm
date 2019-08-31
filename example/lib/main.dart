@@ -53,7 +53,6 @@ class _MyHomePageState extends State<MyHomePage> {
               Center(
                 child: Container(
                   margin: EdgeInsets.only(top: 50, bottom: 100),
-                  padding: EdgeInsets.all(5),
                   child: ConfirmationSlider(
                     onConfirmation: () => confirm(),
                   ),
