@@ -1,8 +1,10 @@
 # confirmation_slider
 
-A slider that will activate a callback when the user slides it to 100%.
+A customizable slider that will activate a callback when the user slides it to 100%.
 
 ## Screenshots
+
+<img src="example.gif" width="300">
 
 ## Installation
 
