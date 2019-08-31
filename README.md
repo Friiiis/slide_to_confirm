@@ -2,18 +2,6 @@
 
 A customizable slider that will activate a callback when the user slides it to 100%.
 
-## Screenshots
-
-![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/example.gif "Slider Gif")
-
-![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc01.jpg "Slider Gif")
-
-![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc02.jpg "Slider Gif")
-
-![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc03.jpg "Slider Gif")
-
-![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc04.jpg "Slider Gif")
-
 ## Installation
 
 In the `dependencies:` section of your `pubspec.yaml`, add the following line:
@@ -57,6 +45,18 @@ class MyWidget extends StatelessWidget {
 ## Example
 
 View the Flutter app in the `example` directory to see a working example of how to use and implement the slider.
+
+## Screenshots
+
+![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/example.gif "Slider Gif")
+
+![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc01.jpg "Slider Gif")
+
+![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc02.jpg "Slider Gif")
+
+![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc03.jpg "Slider Gif")
+
+![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc04.jpg "Slider Gif")
 
 ## Contributors
 
