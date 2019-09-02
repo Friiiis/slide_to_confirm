@@ -1,5 +1,5 @@
-import 'package:example/ConfirmationSlider.dart';
 import 'package:flutter/material.dart';
+import 'package:slide_to_confirm/slide_to_confirm.dart';
 
 void main() => runApp(MyApp());
 
