@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.0.6] - 02/01-2020
+
+* Added foregroundShape and backgroundShape to docs.
+
 ## [0.0.5] - 08/09-2019
 
 * Added foregroundShape and backgroundShape that lets you specify the BorderRadius of both elements.

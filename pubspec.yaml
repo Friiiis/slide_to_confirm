@@ -1,6 +1,6 @@
 name: slide_to_confirm
 description: A slider that will activate a callback when the user slides it to 100%.
-version: 0.0.5
+version: 0.0.6
 author: Gustav Friis-Hansen <friisdeveloper@gmail.com>
 homepage: https://github.com/Friiiis/slide_to_confirm
 
