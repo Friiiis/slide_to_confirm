@@ -41,6 +41,8 @@ class MyWidget extends StatelessWidget {
 - **text** `String`: The text showed below the foreground. Used to specify the functionality to the user. Defaults to `"Slide to confirm"`.
 - **textStyle** `TextStyle`: The style of the text. Defaults to `TextStyle(color: Colors.black26, fontWeight: FontWeight.bold,)`.
 - **onConfirmation** `VoidCallback`: The callback when slider is completed. **This is the only required field**.
+- **foregroundShape** `BorderRadius`: The shape of the foreground (the moving element of the slider). Defaults to a circular border radius.
+- **backgroundShape** `BorderRadius`: The shape of the background of the slider. Defaults to a circular border radius.
 
 ## Example
 
