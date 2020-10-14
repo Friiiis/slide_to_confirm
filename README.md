@@ -34,6 +34,7 @@ class MyWidget extends StatelessWidget {
 - **height** `double`: Height of the slider. Defaults to `70`.
 - **width** `double`: Width of the slider. Defaults to `300`.
 - **backgroundColor** `Color`: The color of the background of the slider. Defaults to `Colors.white`.
+- **backgroundColorEnd** `Color`: The color of the background of the slider when it has been slide to the end. By giving a value here, the background color will gradually change from `backgroundColor` to `backgroundColorEnd` when the user slides. Is not used by default.
 - **foregroundColor** `Color`: The color of the moving element of the slider. Defaults to `Colors.blueAccent`.
 - **iconColor** `Color`: The color of the icon on the moving element. Defaults to `Colors.white`.
 - **icon** `IconData`: The icon used on the moving element of the slider. Defaults to `Icons.chevron_right`.

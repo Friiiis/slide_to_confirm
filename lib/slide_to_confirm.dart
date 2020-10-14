@@ -12,6 +12,10 @@ class ConfirmationSlider extends StatefulWidget {
   /// The color of the background of the slider. Defaults to Colors.white.
   final Color backgroundColor;
 
+  /// The color of the background of the slider when it has been slide to the end. By giving a value here, the background color
+  /// will gradually change from backgroundColor to backgroundColorEnd when the user slides. Is not used by default.
+  final Color backgroundColorEnd;
+
   /// The color of the moving element of the slider. Defaults to Colors.blueAccent.
   final Color foregroundColor;
 
@@ -44,6 +48,7 @@ class ConfirmationSlider extends StatefulWidget {
       this.height = 70,
       this.width = 300,
       this.backgroundColor = Colors.white,
+      this.backgroundColorEnd,
       this.foregroundColor = Colors.blueAccent,
       this.iconColor = Colors.white,
       this.shadow,
@@ -96,6 +101,25 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
     updatePosition(details);
   }
 
+  Color calculateBackground() {
+    double percent;
+    
+    // calculates the percentage of the position of the slider
+    if (_position > widget.width - widget.height) {
+      percent = 1.0;
+    } else if (_position / (widget.width - widget.height) > 0) {
+      percent = _position / (widget.width - widget.height);
+    } else {
+      percent = 0.0;
+    }
+
+    int red = widget.backgroundColorEnd.red;
+    int green = widget.backgroundColorEnd.green;
+    int blue = widget.backgroundColorEnd.blue;
+
+    return Color.alphaBlend(Color.fromRGBO(red, green, blue, percent), widget.backgroundColor);
+  }
+
   @override
   Widget build(BuildContext context) {
     BoxShadow shadow;
@@ -120,14 +144,16 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
       style = widget.textStyle;
     }
 
-    return Container(
+    return AnimatedContainer(
+      duration: Duration(milliseconds: _duration),
+      curve: Curves.ease,
       height: widget.height,
       width: widget.width,
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius:
             widget.backgroundShape ?? BorderRadius.all(Radius.circular(widget.height)),
-        color: widget.backgroundColor,
+        color: widget.backgroundColorEnd != null ? this.calculateBackground() : widget.backgroundColor,
         boxShadow: <BoxShadow>[shadow],
       ),
       child: Stack(
@@ -144,11 +170,11 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
               height: widget.height - 10,
               width: getPosition(),
               duration: Duration(milliseconds: _duration),
-              curve: Curves.bounceOut,
+              curve: Curves.ease,
               decoration: BoxDecoration(
                 borderRadius: widget.backgroundShape ??
                     BorderRadius.all(Radius.circular(widget.height)),
-                color: widget.backgroundColor,
+                color: widget.backgroundColorEnd != null ? this.calculateBackground() : widget.backgroundColor,
               ),
             ),
           ),
