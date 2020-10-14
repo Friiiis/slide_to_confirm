@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.0.7] - 14/10-2020
+
+* Added backgroundColorEnd that will make the slider change background color gradually while the user slides.
+
 ## [0.0.6] - 02/01-2020
 
 * Added foregroundShape and backgroundShape to docs.
