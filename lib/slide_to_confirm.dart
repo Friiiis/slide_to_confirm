@@ -19,11 +19,8 @@ class ConfirmationSlider extends StatefulWidget {
   /// The color of the moving element of the slider. Defaults to Colors.blueAccent.
   final Color foregroundColor;
 
-  /// The color of the icon on the moving element. Defaults to Colors.white.
-  final Color iconColor;
-
   /// The icon used on the moving element of the slider. Defaults to Icons.chevron_right.
-  final IconData icon;
+  final Widget icon;
 
   /// The shadow below the slider. Defaults to BoxShadow(color: Colors.black38, offset: Offset(0, 2),blurRadius: 2,spreadRadius: 0,).
   final BoxShadow shadow;
@@ -45,19 +42,22 @@ class ConfirmationSlider extends StatefulWidget {
 
   const ConfirmationSlider(
       {Key key,
-      this.height = 70,
-      this.width = 300,
-      this.backgroundColor = Colors.white,
-      this.backgroundColorEnd,
-      this.foregroundColor = Colors.blueAccent,
-      this.iconColor = Colors.white,
-      this.shadow,
-      this.icon = Icons.chevron_right,
-      this.text = "Slide to confirm",
-      this.textStyle,
-      @required this.onConfirmation,
-      this.foregroundShape,
-      this.backgroundShape})
+        this.height = 70,
+        this.width = 300,
+        this.backgroundColor = Colors.white,
+        this.backgroundColorEnd,
+        this.foregroundColor = Colors.blueAccent,
+        this.shadow,
+        this.icon = const Icon(
+          Icons.chevron_right,
+          color: Colors.white,
+          size: 35,
+        ),
+        this.text = "Slide to confirm",
+        this.textStyle,
+        @required this.onConfirmation,
+        this.foregroundShape,
+        this.backgroundShape})
       : assert(height >= 25 && width >= 250);
 
   @override
@@ -103,7 +103,7 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
 
   Color calculateBackground() {
     double percent;
-    
+
     // calculates the percentage of the position of the slider
     if (_position > widget.width - widget.height) {
       percent = 1.0;
@@ -117,7 +117,8 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
     int green = widget.backgroundColorEnd.green;
     int blue = widget.backgroundColorEnd.blue;
 
-    return Color.alphaBlend(Color.fromRGBO(red, green, blue, percent), widget.backgroundColor);
+    return Color.alphaBlend(
+        Color.fromRGBO(red, green, blue, percent), widget.backgroundColor);
   }
 
   @override
@@ -151,9 +152,11 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
       width: widget.width,
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
-        borderRadius:
-            widget.backgroundShape ?? BorderRadius.all(Radius.circular(widget.height)),
-        color: widget.backgroundColorEnd != null ? this.calculateBackground() : widget.backgroundColor,
+        borderRadius: widget.backgroundShape ??
+            BorderRadius.all(Radius.circular(widget.height)),
+        color: widget.backgroundColorEnd != null
+            ? this.calculateBackground()
+            : widget.backgroundColor,
         boxShadow: <BoxShadow>[shadow],
       ),
       child: Stack(
@@ -174,7 +177,9 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
               decoration: BoxDecoration(
                 borderRadius: widget.backgroundShape ??
                     BorderRadius.all(Radius.circular(widget.height)),
-                color: widget.backgroundColorEnd != null ? this.calculateBackground() : widget.backgroundColor,
+                color: widget.backgroundColorEnd != null
+                    ? this.calculateBackground()
+                    : widget.backgroundColor,
               ),
             ),
           ),
@@ -194,11 +199,7 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
                       BorderRadius.all(Radius.circular(widget.height / 2)),
                   color: widget.foregroundColor,
                 ),
-                child: Icon(
-                  widget.icon,
-                  color: widget.iconColor,
-                  size: widget.height * 0.5,
-                ),
+                child: widget.icon,
               ),
             ),
           ),
