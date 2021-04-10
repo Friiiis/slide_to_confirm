@@ -20,7 +20,7 @@ class ConfirmationSlider extends StatefulWidget {
   final Color foregroundColor;
 
   /// The icon used on the moving element of the slider. Defaults to Icons.chevron_right.
-  final Widget icon;
+  final dynamic icon;
 
   /// The shadow below the slider. Defaults to BoxShadow(color: Colors.black38, offset: Offset(0, 2),blurRadius: 2,spreadRadius: 0,).
   final BoxShadow shadow;
@@ -48,17 +48,14 @@ class ConfirmationSlider extends StatefulWidget {
         this.backgroundColorEnd,
         this.foregroundColor = Colors.blueAccent,
         this.shadow,
-        this.icon = const Icon(
-          Icons.chevron_right,
-          color: Colors.white,
-          size: 35,
-        ),
+        this.icon = Icons.chevron_right,
         this.text = "Slide to confirm",
         this.textStyle,
         @required this.onConfirmation,
         this.foregroundShape,
         this.backgroundShape})
-      : assert(height >= 25 && width >= 250);
+      : assert(height >= 25 && width >= 250),
+        assert(icon is ImageIcon || icon is IconData);
 
   @override
   State<StatefulWidget> createState() {
@@ -199,7 +196,16 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
                       BorderRadius.all(Radius.circular(widget.height / 2)),
                   color: widget.foregroundColor,
                 ),
-                child: widget.icon,
+                child: widget.icon is IconData
+                    ? Icon(
+                  widget.icon,
+                  color: Colors.white,
+                  size: 35,
+                )
+                    : Container(
+                  margin: EdgeInsets.all(10),
+                  child: widget.icon,
+                ),
               ),
             ),
           ),
