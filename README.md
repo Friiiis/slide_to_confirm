@@ -62,7 +62,3 @@ View the Flutter app in the `example` directory to see a working example of how 
 ![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc03.jpg "Slider Gif")
 
 ![Slider Gif](https://github.com/Friiiis/slide_to_confirm/blob/master/sc04.jpg "Slider Gif")
-
-## Contributors
-
-Gustav Friis-Hansen: https://github.com/Friiiis?tab=repositories
