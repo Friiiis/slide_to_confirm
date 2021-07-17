@@ -17,11 +17,8 @@ class ConfirmationSlider extends StatefulWidget {
   /// The color of the moving element of the slider. Defaults to Colors.blueAccent.
   final Color foregroundColor;
 
-  /// The color of the icon on the moving element. Defaults to Colors.white.
-  final Color iconColor;
-
   /// The icon used on the moving element of the slider. Defaults to Icons.chevron_right.
-  final IconData icon;
+  final dynamic icon;
 
   /// The shadow below the slider. Defaults to BoxShadow(color: Colors.black38, offset: Offset(0, 2),blurRadius: 2,spreadRadius: 0,).
   final BoxShadow? shadow;
@@ -64,7 +61,8 @@ class ConfirmationSlider extends StatefulWidget {
     this.onTapUp,
     this.foregroundShape,
     this.backgroundShape,
-  }) : assert(height >= 25 && width >= 250);
+  }) : assert(height >= 25 && width >= 250),
+       assert(icon is ImageIcon || icon is IconData);
 
   @override
   State<StatefulWidget> createState() {
@@ -161,8 +159,12 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
       width: widget.width,
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
-        borderRadius: widget.backgroundShape ?? BorderRadius.all(Radius.circular(widget.height)),
-        color: this.calculateBackground(),
+        borderRadius: widget.backgroundShape ??
+            BorderRadius.all(Radius.circular(widget.height)),
+        color: widget.backgroundColorEnd != null
+            ? this.calculateBackground()
+            : widget.backgroundColor,
+
         boxShadow: <BoxShadow>[shadow],
       ),
       child: Stack(
@@ -181,8 +183,11 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
               duration: Duration(milliseconds: _duration),
               curve: Curves.ease,
               decoration: BoxDecoration(
-                borderRadius: widget.backgroundShape ?? BorderRadius.all(Radius.circular(widget.height)),
-                color: this.calculateBackground(),
+                borderRadius: widget.backgroundShape ??
+                    BorderRadius.all(Radius.circular(widget.height)),
+                color: widget.backgroundColorEnd != null
+                    ? this.calculateBackground()
+                    : widget.backgroundColor,
               ),
             ),
           ),
@@ -203,10 +208,15 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
                   borderRadius: widget.foregroundShape ?? BorderRadius.all(Radius.circular(widget.height / 2)),
                   color: widget.foregroundColor,
                 ),
-                child: Icon(
+                child: widget.icon is IconData
+                    ? Icon(
                   widget.icon,
-                  color: widget.iconColor,
-                  size: widget.height * 0.5,
+                  color: Colors.white,
+                  size: 35,
+                )
+                    : Container(
+                  margin: EdgeInsets.all(10),
+                  child: widget.icon,
                 ),
               ),
             ),
