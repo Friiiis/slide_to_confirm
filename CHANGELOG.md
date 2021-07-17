@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.1] - 18/07-2021
+
+* Updated readme.
+
 ## [1.0.0] - 06/07-2021
 
 * Added null safety.
