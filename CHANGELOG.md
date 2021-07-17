@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.0.0] - 06/07-2021
+
+* Added null safety.
+* Added onTapDown and onTapUp events.
+
 ## [0.0.7] - 14/10-2020
 
 * Added backgroundColorEnd that will make the slider change background color gradually while the user slides.
