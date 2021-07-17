@@ -17,6 +17,9 @@ class ConfirmationSlider extends StatefulWidget {
   /// The color of the moving element of the slider. Defaults to Colors.blueAccent.
   final Color foregroundColor;
 
+  /// The color of the icon on the moving element if icon is IconData. Defaults to Colors.white.
+  final Color iconColor;
+
   /// The icon used on the moving element of the slider. Defaults to Icons.chevron_right.
   final dynamic icon;
 
@@ -211,7 +214,7 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
                 child: widget.icon is IconData
                     ? Icon(
                   widget.icon,
-                  color: Colors.white,
+                  color: widget.iconColor,
                   size: 35,
                 )
                     : Container(
