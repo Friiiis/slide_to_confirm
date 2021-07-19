@@ -47,6 +47,9 @@ class ConfirmationSlider extends StatefulWidget {
   /// The shape of the background of the slider. Defaults to a circular border radius
   final BorderRadius? backgroundShape;
 
+  /// Stick the slider to the end
+  final bool stickToEnd;
+
   const ConfirmationSlider({
     Key? key,
     this.height = 70,
@@ -64,8 +67,9 @@ class ConfirmationSlider extends StatefulWidget {
     this.onTapUp,
     this.foregroundShape,
     this.backgroundShape,
-  }) : assert(height >= 25 && width >= 250),
-       assert(icon is ImageIcon || icon is IconData);
+    this.stickToEnd = false,
+  })  : assert(height >= 25 && width >= 250),
+        assert(icon is ImageIcon || icon is IconData);
 
   @override
   State<StatefulWidget> createState() {
@@ -91,7 +95,11 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
     if (details is DragEndDetails) {
       setState(() {
         _duration = 600;
-        _position = 0;
+        if (widget.stickToEnd && _position > widget.width - widget.height) {
+          _position = widget.width - widget.height;
+        } else {
+          _position = 0;
+        }
       });
     } else if (details is DragUpdateDetails) {
       setState(() {
@@ -162,12 +170,8 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
       width: widget.width,
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
-        borderRadius: widget.backgroundShape ??
-            BorderRadius.all(Radius.circular(widget.height)),
-        color: widget.backgroundColorEnd != null
-            ? this.calculateBackground()
-            : widget.backgroundColor,
-
+        borderRadius: widget.backgroundShape ?? BorderRadius.all(Radius.circular(widget.height)),
+        color: widget.backgroundColorEnd != null ? this.calculateBackground() : widget.backgroundColor,
         boxShadow: <BoxShadow>[shadow],
       ),
       child: Stack(
@@ -186,11 +190,8 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
               duration: Duration(milliseconds: _duration),
               curve: Curves.ease,
               decoration: BoxDecoration(
-                borderRadius: widget.backgroundShape ??
-                    BorderRadius.all(Radius.circular(widget.height)),
-                color: widget.backgroundColorEnd != null
-                    ? this.calculateBackground()
-                    : widget.backgroundColor,
+                borderRadius: widget.backgroundShape ?? BorderRadius.all(Radius.circular(widget.height)),
+                color: widget.backgroundColorEnd != null ? this.calculateBackground() : widget.backgroundColor,
               ),
             ),
           ),
@@ -202,8 +203,13 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
             child: GestureDetector(
               onTapDown: (_) => widget.onTapDown != null ? widget.onTapDown!() : null,
               onTapUp: (_) => widget.onTapUp != null ? widget.onTapUp!() : null,
-              onPanUpdate: (details) => updatePosition(details),
-              onPanEnd: (details) => sliderReleased(details),
+              onPanUpdate: (details) {
+                updatePosition(details);
+              },
+              onPanEnd: (details) {
+                if (widget.onTapUp != null) widget.onTapUp!();
+                sliderReleased(details);
+              },
               child: Container(
                 height: widget.height - 10,
                 width: widget.height - 10,
@@ -213,14 +219,14 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
                 ),
                 child: widget.icon is IconData
                     ? Icon(
-                  widget.icon,
-                  color: widget.iconColor,
-                  size: 35,
-                )
+                        widget.icon,
+                        color: widget.iconColor,
+                        size: 35,
+                      )
                     : Container(
-                  margin: EdgeInsets.all(10),
-                  child: widget.icon,
-                ),
+                        margin: EdgeInsets.all(10),
+                        child: widget.icon,
+                      ),
               ),
             ),
           ),
