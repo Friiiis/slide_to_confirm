@@ -7,7 +7,7 @@ A customizable slider that will activate a callback when the user slides it to 1
 In the `dependencies:` section of your `pubspec.yaml`, add the following line:
 
 ```yaml
-  slide_to_confirm: <latest_version>
+slide_to_confirm: <latest_version>
 ```
 
 ## Usage
@@ -46,6 +46,7 @@ class MyWidget extends StatelessWidget {
 - **onTapUp** `VoidCallback`: The callback when slider is release.
 - **foregroundShape** `BorderRadius`: The shape of the foreground (the moving element of the slider). Defaults to a circular border radius.
 - **backgroundShape** `BorderRadius`: The shape of the background of the slider. Defaults to a circular border radius.
+- **stickToEnd** `bool`: Bool that indicates if stick or not the cursor at end of slide
 
 ## Example
 
