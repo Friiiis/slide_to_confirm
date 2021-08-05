@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.2] - 05/08-2021
+
+- Changed icon to widget and param renamed to sliderButtonContent
+
 ## [1.0.2] - 18/07-2021
 
 - Added stickToEnd param.
