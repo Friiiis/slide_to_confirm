@@ -37,7 +37,7 @@ class MyWidget extends StatelessWidget {
 - **backgroundColorEnd** `Color`: The color of the background of the slider when it has been slide to the end. By giving a value here, the background color will gradually change from `backgroundColor` to `backgroundColorEnd` when the user slides. Is not used by default.
 - **foregroundColor** `Color`: The color of the moving element of the slider. Defaults to `Colors.blueAccent`.
 - **iconColor** `Color`: The color of the icon on the moving element if `icon` is IconData. Defaults to `Colors.white`.
-- **icon** `IconData` or `ImageIcon`: The icon used on the moving element of the slider. Defaults to `Icons.chevron_right`.
+- **sliderButtonContent** `Widget` or : The icon widget used on the moving element of the slider. Defaults to `Icon(Icons.chevron_right)`.
 - **shadow** `BoxShadow`: The shadow below the slider. Defaults to `BoxShadow(color: Colors.black38, offset: Offset(0, 2),blurRadius: 2,spreadRadius: 0,)`.
 - **text** `String`: The text showed below the foreground. Used to specify the functionality to the user. Defaults to `"Slide to confirm"`.
 - **textStyle** `TextStyle`: The style of the text. Defaults to `TextStyle(color: Colors.black26, fontWeight: FontWeight.bold,)`.
