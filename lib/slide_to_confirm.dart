@@ -20,8 +20,8 @@ class ConfirmationSlider extends StatefulWidget {
   /// The color of the icon on the moving element if icon is IconData. Defaults to Colors.white.
   final Color iconColor;
 
-  /// The icon used on the moving element of the slider. Defaults to Icons.chevron_right.
-  final dynamic icon;
+  /// The button widget used on the moving element of the slider. Defaults to Icon(Icons.chevron_right).
+  final Widget sliderButtonContent;
 
   /// The shadow below the slider. Defaults to BoxShadow(color: Colors.black38, offset: Offset(0, 2),blurRadius: 2,spreadRadius: 0,).
   final BoxShadow? shadow;
@@ -59,7 +59,11 @@ class ConfirmationSlider extends StatefulWidget {
     this.foregroundColor = Colors.blueAccent,
     this.iconColor = Colors.white,
     this.shadow,
-    this.icon = Icons.chevron_right,
+    this.sliderButtonContent = const Icon(
+      Icons.chevron_right,
+      color: Colors.white,
+      size: 35,
+    ),
     this.text = "Slide to confirm",
     this.textStyle,
     required this.onConfirmation,
@@ -68,8 +72,7 @@ class ConfirmationSlider extends StatefulWidget {
     this.foregroundShape,
     this.backgroundShape,
     this.stickToEnd = false,
-  })  : assert(height >= 25 && width >= 250),
-        assert(icon is ImageIcon || icon is IconData);
+  }) : assert(height >= 25 && width >= 250);
 
   @override
   State<StatefulWidget> createState() {
@@ -217,16 +220,7 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
                   borderRadius: widget.foregroundShape ?? BorderRadius.all(Radius.circular(widget.height / 2)),
                   color: widget.foregroundColor,
                 ),
-                child: widget.icon is IconData
-                    ? Icon(
-                        widget.icon,
-                        color: widget.iconColor,
-                        size: 35,
-                      )
-                    : Container(
-                        margin: EdgeInsets.all(10),
-                        child: widget.icon,
-                      ),
+                child: widget.sliderButtonContent,
               ),
             ),
           ),

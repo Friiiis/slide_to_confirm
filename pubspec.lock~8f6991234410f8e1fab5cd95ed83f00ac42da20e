@@ -43,13 +43,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
-  cupertino_icons:
-    dependency: "direct main"
-    description:
-      name: cupertino_icons
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.2"
   fake_async:
     dependency: transitive
     description:
@@ -93,13 +86,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  slide_to_confirm:
-    dependency: "direct main"
-    description:
-      name: slide_to_confirm
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.7"
   source_span:
     dependency: transitive
     description:
@@ -157,4 +143,4 @@ packages:
     source: hosted
     version: "2.1.0"
 sdks:
-  dart: ">=2.12.0 <3.0.0"
+  dart: ">=2.13.0 <3.0.0"
