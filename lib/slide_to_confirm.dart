@@ -21,7 +21,7 @@ class ConfirmationSlider extends StatefulWidget {
   final Color iconColor;
 
   /// The icon used on the moving element of the slider. Defaults to Icons.chevron_right.
-  final dynamic icon;
+  final Widget icon;
 
   /// The shadow below the slider. Defaults to BoxShadow(color: Colors.black38, offset: Offset(0, 2),blurRadius: 2,spreadRadius: 0,).
   final BoxShadow? shadow;
@@ -59,7 +59,11 @@ class ConfirmationSlider extends StatefulWidget {
     this.foregroundColor = Colors.blueAccent,
     this.iconColor = Colors.white,
     this.shadow,
-    this.icon = Icons.chevron_right,
+    this.icon = const Icon(
+      Icons.chevron_right,
+      color: Colors.white,
+      size: 35,
+    ),
     this.text = "Slide to confirm",
     this.textStyle,
     required this.onConfirmation,
@@ -68,8 +72,7 @@ class ConfirmationSlider extends StatefulWidget {
     this.foregroundShape,
     this.backgroundShape,
     this.stickToEnd = false,
-  })  : assert(height >= 25 && width >= 250),
-        assert(icon is ImageIcon || icon is IconData);
+  }) : assert(height >= 25 && width >= 250);
 
   @override
   State<StatefulWidget> createState() {
@@ -133,7 +136,8 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
       int green = widget.backgroundColorEnd!.green;
       int blue = widget.backgroundColorEnd!.blue;
 
-      return Color.alphaBlend(Color.fromRGBO(red, green, blue, percent), widget.backgroundColor);
+      return Color.alphaBlend(
+          Color.fromRGBO(red, green, blue, percent), widget.backgroundColor);
     } else {
       return widget.backgroundColor;
     }
@@ -170,8 +174,11 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
       width: widget.width,
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
-        borderRadius: widget.backgroundShape ?? BorderRadius.all(Radius.circular(widget.height)),
-        color: widget.backgroundColorEnd != null ? this.calculateBackground() : widget.backgroundColor,
+        borderRadius: widget.backgroundShape ??
+            BorderRadius.all(Radius.circular(widget.height)),
+        color: widget.backgroundColorEnd != null
+            ? this.calculateBackground()
+            : widget.backgroundColor,
         boxShadow: <BoxShadow>[shadow],
       ),
       child: Stack(
@@ -190,8 +197,11 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
               duration: Duration(milliseconds: _duration),
               curve: Curves.ease,
               decoration: BoxDecoration(
-                borderRadius: widget.backgroundShape ?? BorderRadius.all(Radius.circular(widget.height)),
-                color: widget.backgroundColorEnd != null ? this.calculateBackground() : widget.backgroundColor,
+                borderRadius: widget.backgroundShape ??
+                    BorderRadius.all(Radius.circular(widget.height)),
+                color: widget.backgroundColorEnd != null
+                    ? this.calculateBackground()
+                    : widget.backgroundColor,
               ),
             ),
           ),
@@ -201,7 +211,8 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
             left: getPosition(),
             top: 0,
             child: GestureDetector(
-              onTapDown: (_) => widget.onTapDown != null ? widget.onTapDown!() : null,
+              onTapDown: (_) =>
+                  widget.onTapDown != null ? widget.onTapDown!() : null,
               onTapUp: (_) => widget.onTapUp != null ? widget.onTapUp!() : null,
               onPanUpdate: (details) {
                 updatePosition(details);
@@ -214,19 +225,11 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
                 height: widget.height - 10,
                 width: widget.height - 10,
                 decoration: BoxDecoration(
-                  borderRadius: widget.foregroundShape ?? BorderRadius.all(Radius.circular(widget.height / 2)),
+                  borderRadius: widget.foregroundShape ??
+                      BorderRadius.all(Radius.circular(widget.height / 2)),
                   color: widget.foregroundColor,
                 ),
-                child: widget.icon is IconData
-                    ? Icon(
-                        widget.icon,
-                        color: widget.iconColor,
-                        size: 35,
-                      )
-                    : Container(
-                        margin: EdgeInsets.all(10),
-                        child: widget.icon,
-                      ),
+                child: widget.icon,
               ),
             ),
           ),
