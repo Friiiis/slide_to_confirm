@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.2] - 05/08-2021
+## [1.1.0] - 05/08-2021
 
 - Changed icon to widget and param renamed to sliderButtonContent
 
