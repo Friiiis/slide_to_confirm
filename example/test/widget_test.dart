@@ -1,30 +1,34 @@
-// // This is a basic Flutter widget test.
-// //
-// // To perform an interaction with a widget in your test, use the WidgetTester
-// // utility that Flutter provides. For example, you can send tap and scroll
-// // gestures. You can also use WidgetTester to find child widgets in the widget
-// // tree, read text, and verify that the values of widget properties are correct.
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:slide_to_confirm/slide_to_confirm.dart';
 
-// import 'package:flutter/material.dart';
-// import 'package:flutter_test/flutter_test.dart';
+import '../lib/main.dart';
 
-// import 'package:example/main.dart';
+void main() {
+  testWidgets('Confirmation slider test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(MyApp());
 
-// void main() {
-//   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-//     // Build our app and trigger a frame.
-//     await tester.pumpWidget(MyApp());
+    // Verify that our counter starts at 0.
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('1'), findsNothing);
 
-//     // Verify that our counter starts at 0.
-//     expect(find.text('0'), findsOneWidget);
-//     expect(find.text('1'), findsNothing);
+    // Find slider and get its size to measure how much to slide
+    final confirmationSlider = find.byType(ConfirmationSlider);
+    final sliderSize = tester.getSize(confirmationSlider);
 
-//     // Tap the '+' icon and trigger a frame.
-//     await tester.tap(find.byIcon(Icons.add));
-//     await tester.pump();
+    // Find the sliderButtonContent. If its custom, find it by your icon, widget or add a key
+    final sliderButtonContent = find.byIcon(Icons.chevron_right);
 
-//     // Verify that our counter has incremented.
-//     expect(find.text('0'), findsNothing);
-//     expect(find.text('1'), findsOneWidget);
-//   });
-// }
+    // Slide the button and trigger a frame.
+    await tester.drag(
+      find.descendant(of: confirmationSlider, matching: sliderButtonContent),
+      Offset(sliderSize.width, 0),
+    );
+    await tester.pump();
+
+    // Verify that our counter has incremented.
+    expect(find.text('0'), findsNothing);
+    expect(find.text('1'), findsOneWidget);
+  });
+}

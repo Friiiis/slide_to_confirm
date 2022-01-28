@@ -50,7 +50,7 @@ class MyWidget extends StatelessWidget {
 
 ## Example
 
-View the Flutter app in the `example` directory to see a working example of how to use and implement the slider.
+View the Flutter app in the `example` directory to see a working example of how to use and implement the slider and how to test it.
 
 ## Screenshots
 
