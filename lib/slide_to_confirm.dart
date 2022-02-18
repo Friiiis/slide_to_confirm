@@ -48,13 +48,13 @@ class ConfirmationSlider extends StatefulWidget {
   final BorderRadius? backgroundShape;
 
   /// The color of the icon for ConfirmationSlider. Defaults to Colors.white.
-  final Color sliderButtonIconColor;
+  final Color? sliderButtonIconColor;
 
   /// The Icon for ConfirmationSlider. Defaults to Icons.chevron_right.
-  final Icon sliderButtonIcon;
+  final Icon? sliderButtonIcon;
 
   /// The double for ConfirmationSlider. Defaults to 35.
-  final double sliderButtonSize;
+  final double? sliderButtonSize;
 
   /// Stick the slider to the end
   final bool stickToEnd;
