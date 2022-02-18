@@ -47,6 +47,15 @@ class ConfirmationSlider extends StatefulWidget {
   /// The shape of the background of the slider. Defaults to a circular border radius
   final BorderRadius? backgroundShape;
 
+  /// The color of the icon for ConfirmationSlider. Defaults to Colors.white.
+  final Color? sliderButtonIconColor;
+
+  /// The Icon for ConfirmationSlider. Defaults to Icons.chevron_right.
+  final Icon? sliderButtonIcon;
+
+  /// The double for ConfirmationSlider. Defaults to 35.
+  final double? sliderButtonSize;
+
   /// Stick the slider to the end
   final bool stickToEnd;
 
@@ -60,9 +69,9 @@ class ConfirmationSlider extends StatefulWidget {
     this.iconColor = Colors.white,
     this.shadow,
     this.sliderButtonContent = const Icon(
-      Icons.chevron_right,
-      color: Colors.white,
-      size: 35,
+      sliderButtonIcon,
+      color: sliderButtonIconColor,
+      size: sliderButtonSize,
     ),
     this.text = "Slide to confirm",
     this.textStyle,
@@ -72,6 +81,9 @@ class ConfirmationSlider extends StatefulWidget {
     this.foregroundShape,
     this.backgroundShape,
     this.stickToEnd = false,
+    this.sliderButtonIcon = Icons.chevron_right,
+    this.sliderButtonIconColor = Colors.white,
+    this.sliderButtonSize = 35,
   }) : assert(height >= 25 && width >= 250);
 
   @override
@@ -136,7 +148,8 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
       int green = widget.backgroundColorEnd!.green;
       int blue = widget.backgroundColorEnd!.blue;
 
-      return Color.alphaBlend(Color.fromRGBO(red, green, blue, percent), widget.backgroundColor);
+      return Color.alphaBlend(
+          Color.fromRGBO(red, green, blue, percent), widget.backgroundColor);
     } else {
       return widget.backgroundColor;
     }
@@ -173,8 +186,11 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
       width: widget.width,
       padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
-        borderRadius: widget.backgroundShape ?? BorderRadius.all(Radius.circular(widget.height)),
-        color: widget.backgroundColorEnd != null ? this.calculateBackground() : widget.backgroundColor,
+        borderRadius: widget.backgroundShape ??
+            BorderRadius.all(Radius.circular(widget.height)),
+        color: widget.backgroundColorEnd != null
+            ? this.calculateBackground()
+            : widget.backgroundColor,
         boxShadow: <BoxShadow>[shadow],
       ),
       child: Stack(
@@ -193,8 +209,11 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
               duration: Duration(milliseconds: _duration),
               curve: Curves.ease,
               decoration: BoxDecoration(
-                borderRadius: widget.backgroundShape ?? BorderRadius.all(Radius.circular(widget.height)),
-                color: widget.backgroundColorEnd != null ? this.calculateBackground() : widget.backgroundColor,
+                borderRadius: widget.backgroundShape ??
+                    BorderRadius.all(Radius.circular(widget.height)),
+                color: widget.backgroundColorEnd != null
+                    ? this.calculateBackground()
+                    : widget.backgroundColor,
               ),
             ),
           ),
@@ -204,7 +223,8 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
             left: getPosition(),
             top: 0,
             child: GestureDetector(
-              onTapDown: (_) => widget.onTapDown != null ? widget.onTapDown!() : null,
+              onTapDown: (_) =>
+                  widget.onTapDown != null ? widget.onTapDown!() : null,
               onTapUp: (_) => widget.onTapUp != null ? widget.onTapUp!() : null,
               onPanUpdate: (details) {
                 updatePosition(details);
@@ -217,7 +237,8 @@ class ConfirmationSliderState extends State<ConfirmationSlider> {
                 height: widget.height - 10,
                 width: widget.height - 10,
                 decoration: BoxDecoration(
-                  borderRadius: widget.foregroundShape ?? BorderRadius.all(Radius.circular(widget.height / 2)),
+                  borderRadius: widget.foregroundShape ??
+                      BorderRadius.all(Radius.circular(widget.height / 2)),
                   color: widget.foregroundColor,
                 ),
                 child: widget.sliderButtonContent,
